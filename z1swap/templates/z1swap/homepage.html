@@ -1,0 +1,8 @@
+This is my homepage<br />
+{% if user.is_authenticated %}
+Secret classified Info</br>
+<a href="{% url 'logout' %}">Log out</a><br />
+{% else %}
+<a href="{% url 'signup' %}">Sign Up</a><br />
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}

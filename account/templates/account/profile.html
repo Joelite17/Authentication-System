@@ -1,0 +1,48 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block account %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'account/styles/profile.css' %}">
+</head>
+
+<body>
+  <div class="img-div" style="isolation: isolate;">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+  </div>
+  <div class="profile-info">
+    <div class="container" style="isolation: isolate;color: black;">
+      <h5 class="account-heading"><b>
+          Username:
+        </b>
+        <b style="color: white;"> {{user.username }}
+      </h5>
+      </b>
+      <h5><b>First Name:</b>
+        <b style="color: white;">{{ user.first_name }}</b>
+      </h5>
+      <h5><b>Last Name: </b>
+        <b style="color: white;">{{ user.last_name }}</b>
+      </h5>
+      <h5><b>Email:</b>
+        <b style="color: white;">{{ user.email }}</b>
+      </h5>
+    </div>
+  </div>
+  <div class="profile-update">
+    <div class="container">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4" style="color:black;text-align: center;"><b>Profile Information</b></legend>
+          {{  u_form|crispy }}
+        </fieldset>
+        <div class="form-group">
+          <button class="btn" type="submit" style="isolation: isolate;">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock account %}

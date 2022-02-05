@@ -1,0 +1,31 @@
+{% extends 'account/base.html' %} {% load crispy_forms_tags %} {% load static %}
+{% block account %}
+<div class="container">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend
+        class="border-bottom mb-4"
+        style="text-align: center; font-family: algerian"
+      >
+        Log In
+      </legend>
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-secondary" type="submit">Log In</button>
+      <small class="text-muted ml-2">
+        <a href="{% url 'password_reset' %}">Forgot Password?</a>
+      </small>
+    </div>
+  </form>
+  <div class="border-top pt-3">
+    <small class="text-muted small">
+      <p style="isolation: isolate">
+        <strong>Need An Account? </strong
+        ><a class="ml-2" href="{% url 'signup' %}">Sign Up</a>
+      </p>
+    </small>
+  </div>
+</div>
+{% endblock account %}
